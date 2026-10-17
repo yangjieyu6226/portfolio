@@ -1,0 +1,122 @@
+/* The whole scene shares the existing 1920 × 1080 design coordinate system. */
+.work-carousel {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.work-carousel__card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 775px;
+  height: 436px;
+  margin: 0;
+  overflow: visible;
+  border-radius: 24px;
+  transform-origin: center;
+  pointer-events: none;
+  outline: none;
+}
+
+.work-carousel__surface {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background: #d9d9d9;
+  pointer-events: none;
+  transform: translateX(0);
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-carousel.is-interactive .work-carousel__card.is-current:hover > .work-carousel__surface {
+  transform: translateX(20px);
+}
+
+/* A detail transition proxy temporarily owns only the chosen card's artwork. */
+.work-carousel__surface.is-detail-selected {
+  visibility: hidden;
+}
+
+.work-carousel__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.work-carousel.is-revealing .work-carousel__card,
+.work-carousel.is-rotating .work-carousel__card {
+  will-change: transform, opacity;
+}
+
+.work-carousel.is-interactive .work-carousel__card.is-current {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.work-carousel__control {
+  position: absolute;
+  left: 0;
+  z-index: 20;
+  width: 810px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  color: inherit;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  pointer-events: none;
+}
+
+.work-carousel__control--previous {
+  top: 80px;
+  height: 231px;
+}
+
+.work-carousel__control--next {
+  top: 796px;
+  height: 284px;
+}
+
+.work-carousel.is-interactive .work-carousel__control {
+  pointer-events: auto;
+}
+
+.work-carousel__card:focus-visible > .work-carousel__surface,
+.work-carousel__control:focus-visible {
+  outline: 5px solid #ffffff;
+  outline-offset: -8px;
+  box-shadow: inset 0 0 0 11px #256dff;
+}
+
+.work-carousel__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-carousel__surface {
+    transition: none;
+  }
+
+  .work-carousel.is-revealing .work-carousel__card,
+  .work-carousel.is-rotating .work-carousel__card {
+    will-change: auto;
+  }
+}

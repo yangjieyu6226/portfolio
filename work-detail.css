@@ -1,0 +1,194 @@
+/* Work pages share the existing 1920 × 1080 stage; no background is duplicated. */
+.work-detail {
+  position: absolute;
+  inset: 0;
+  z-index: 270;
+  overflow: hidden;
+  outline: none;
+  isolation: isolate;
+}
+
+.work-detail[hidden] {
+  display: none;
+}
+
+.work-detail__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 40%);
+}
+
+.work-detail__backpaper {
+  position: absolute;
+  left: 108.256px;
+  top: 146.5205px;
+  width: 1580.04px;
+  height: 981.387px;
+  border-radius: 12px;
+  background: #a6a6a6;
+  transform: rotate(-1.58deg);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.work-detail__panel {
+  position: absolute;
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* The sheet starts 145px down, but that space scrolls away with it. Keep
+     the native viewport fixed so wheel, touch and keyboard share one offset. */
+  transform-origin: 126px 145px;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  outline: none;
+  user-select: text;
+}
+
+.work-detail__panel::-webkit-scrollbar {
+  display: none;
+}
+
+.work-detail__sheet {
+  position: relative;
+  left: 126px;
+  width: 1668px;
+  margin-top: 145px;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+  background: #d9d9d9;
+  box-shadow: 0 4px 40.3px rgb(0 0 0 / 25%);
+}
+
+.work-detail__panel:focus-visible .work-detail__sheet {
+  outline: 3px solid rgb(255 255 255 / 80%);
+  outline-offset: -5px;
+}
+
+.work-detail__content {
+  width: 1668px;
+  min-height: 2037px;
+  background: #d9d9d9;
+}
+
+.work-detail__content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.work-detail__artwork {
+  position: relative;
+}
+
+.work-detail__artwork.is-reveal-ready.is-reveal-active > img {
+  opacity: 0;
+}
+
+.work-detail__layered-artwork {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.work-detail__artwork.is-reveal-ready.is-reveal-active > .work-detail__layered-artwork {
+  visibility: visible;
+}
+
+.work-detail__close {
+  position: absolute;
+  left: 1821px;
+  top: 77px;
+  z-index: 4;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  outline: none;
+}
+
+.work-detail__close:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 6px;
+}
+
+.work-detail__close-base {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.work-detail__close-icon {
+  position: absolute;
+  left: 12.5px;
+  top: 13.5px;
+  width: 23px;
+  height: 23px;
+}
+
+.work-detail__close img {
+  pointer-events: none;
+}
+
+.work-detail__ghost {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 775px;
+  height: 436px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #d9d9d9;
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+.work-detail__ghost img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.work-detail.is-animating .work-detail__ghost,
+.work-detail.is-animating .work-detail__panel,
+.work-detail.is-animating .work-detail__backpaper {
+  will-change: transform, opacity;
+}
+
+.work-detail__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-detail.is-animating .work-detail__ghost,
+  .work-detail.is-animating .work-detail__panel,
+  .work-detail.is-animating .work-detail__backpaper {
+    will-change: auto;
+  }
+}

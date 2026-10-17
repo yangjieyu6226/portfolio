@@ -1,0 +1,44 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare the static site
+        run: |
+          mkdir -p _site
+          cp index.html styles.css script.js home-spotlight.js work-carousel.js work-record-preview.js work-scroll.js work-detail-motion.js work-detail.js work-carousel.css work-scroll.css work-detail.css _site/
+          cp -R assets vendor _site/
+          touch _site/.nojekyll
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

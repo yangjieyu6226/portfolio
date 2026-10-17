@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#242625" />
+    <title>AI 作品集 · Turntable</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23fff'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@400&family=ZCOOL+QingKe+HuangYou&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=ai-card-record-1" />
+    <link rel="stylesheet" href="./work-carousel.css?v=work-detail-1" />
+    <link rel="stylesheet" href="./work-scroll.css?v=work-detail-1" />
+    <link rel="stylesheet" href="./work-detail.css?v=detail-motion-3" />
+  </head>
+  <body>
+    <div class="scroll-scene" id="scrollScene">
+    <main class="viewport" aria-label="AI 作品集">
+      <section class="stage" id="stage">
+        <div class="work-underlay" aria-hidden="true"></div>
+        <div class="machine">
+          <div class="base-texture"><img src="./assets/background.png" alt="" draggable="false" /></div>
+          <img class="noise" src="./assets/noise.png" alt="" draggable="false" />
+
+          <img class="edge edge-top" src="./assets/edge-horizontal.svg" alt="" draggable="false" />
+          <img class="edge edge-bottom" src="./assets/edge-horizontal.svg" alt="" draggable="false" />
+          <img class="edge edge-left" src="./assets/edge-left.svg" alt="" draggable="false" />
+          <img class="edge edge-right" src="./assets/edge-right.svg" alt="" draggable="false" />
+
+          <div class="detail-crop power-knob"><img src="./assets/detail-sheet.png" alt="" /></div>
+          <div class="detail-crop top-slot"><img src="./assets/detail-sheet.png" alt="" /></div>
+          <div class="detail-crop lower-button"><img src="./assets/detail-sheet.png" alt="" /></div>
+          <div class="detail-crop corner-screw corner-screw--tl"><img src="./assets/detail-sheet.png" alt="" /></div>
+          <div class="detail-crop corner-screw corner-screw--tr"><img src="./assets/detail-sheet.png" alt="" /></div>
+          <div class="detail-crop corner-screw corner-screw--bl"><img src="./assets/detail-sheet.png" alt="" /></div>
+          <div class="detail-crop corner-screw corner-screw--br"><img src="./assets/detail-sheet.png" alt="" /></div>
+
+          <img class="lower-left-panel" src="./assets/lower-left-photo.png" alt="" draggable="false" />
+          <div class="sheet-crop recycle-label"><img src="./assets/texture-sheet.png" alt="" /></div>
+          <div class="sheet-crop direction-label"><img src="./assets/texture-sheet.png" alt="" /></div>
+          <div class="sheet-crop ux-label"><img src="./assets/texture-sheet.png" alt="" /></div>
+          <img class="top-label" src="./assets/top-label-texture.png" alt="" draggable="false" />
+
+          <div class="speed-scale" aria-hidden="true">
+            <span>3</span><i></i><i></i><span>2</span><i></i><i></i><span>1</span><i></i><i></i>
+            <img src="./assets/top-marker.svg" alt="" />
+            <i></i><i></i><span>1</span><i></i><i></i><span>2</span><i></i><i></i><span>3</span>
+          </div>
+
+          <img class="platter" src="./assets/platter-layer.png" alt="" draggable="false" data-layer="platter-fixed" />
+
+          <div class="record-preview-layer record-preview-layer--original" id="recordOriginalLayer">
+            <img
+              class="record"
+              id="record"
+              src="./assets/record-export.png"
+              alt=""
+              draggable="false"
+              data-layer="record-rotating"
+            />
+          </div>
+          <div class="record-preview-layer record-preview-layer--project record-preview-layer--douyin" id="recordDouyinLayer" aria-hidden="true">
+            <img class="record" id="recordDouyin" src="./assets/work-record-douyin.png" alt="" draggable="false" data-layer="record-douyin-rotating" data-project-record="douyin" />
+          </div>
+          <div class="record-preview-layer record-preview-layer--project record-preview-layer--lenovo" id="recordLenovoLayer" aria-hidden="true">
+            <img class="record" id="recordLenovo" src="./assets/work-record-lenovo.png" alt="" draggable="false" data-layer="record-lenovo-rotating" data-project-record="lenovo" />
+          </div>
+          <div class="record-preview-layer record-preview-layer--project record-preview-layer--quye" id="recordQuyeLayer" aria-hidden="true">
+            <img class="record" id="recordQuye" src="./assets/work-record-quye.png" alt="" draggable="false" data-layer="record-quye-rotating" data-project-record="quye" />
+          </div>
+          <div class="record-preview-layer record-preview-layer--project record-preview-layer--ai" id="recordAiLayer" aria-hidden="true">
+            <img class="record" id="recordAi" src="./assets/work-record-ai.png" alt="" draggable="false" data-layer="record-ai-rotating" data-project-record="ai" />
+          </div>
+          <img class="spindle" src="./assets/spindle-layer.png" alt="" draggable="false" data-layer="spindle-fixed" />
+
+          <div class="tonearm-layer tonearm-base" data-layer="tonearm-base-fixed">
+            <img src="./assets/tonearm-base-layer.png" alt="" draggable="false" />
+          </div>
+          <div class="tonearm-layer tonearm-moving" id="tonearm" data-layer="tonearm-moving">
+            <img src="./assets/tonearm-moving-layer.png" alt="" draggable="false" />
+          </div>
+
+          <div class="fader-control" id="faderControl" data-layer="fader-control">
+            <img class="fader-track" src="./assets/fader-track-layer.png" alt="" draggable="false" />
+            <button
+              class="fader-handle"
+              id="faderHandle"
+              type="button"
+              role="slider"
+              aria-label="音量推子"
+              aria-orientation="vertical"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <img src="./assets/fader-handle-layer.png" alt="" draggable="false" />
+            </button>
+          </div>
+
+          <div
+            class="tags-zone"
+            id="tagsZone"
+            data-layer="tags-hover-zone"
+            role="button"
+            tabindex="0"
+            aria-label="打开个人档案"
+            aria-haspopup="dialog"
+            aria-controls="portfolioModal"
+            aria-expanded="false"
+          >
+            <img class="tag tag-white" src="./assets/tag-front-layer.png" alt="" draggable="false" data-layer="tag-white" />
+            <img class="tag tag-blue" src="./assets/tag-back-layer.png" alt="" draggable="false" data-layer="tag-blue" />
+          </div>
+          <img class="paperclip" src="./assets/paperclip-layer.png" alt="" draggable="false" data-layer="paperclip-fixed" />
+
+          <div class="sticker-zone sticker-zone--yellow" data-sticker="yellow">
+            <img class="sticker sticker-yellow" src="./assets/sticker-yellow-layer.png" alt="" draggable="false" data-layer="sticker-yellow" />
+          </div>
+          <div class="sticker-zone sticker-zone--white" data-sticker="white">
+            <img class="sticker sticker-white" src="./assets/sticker-white-layer.png" alt="" draggable="false" data-layer="sticker-white" />
+          </div>
+
+          <div class="record-hotspot" id="recordHotspot" data-layer="record-fixed-hover-zone" aria-hidden="true"></div>
+        </div>
+
+        <div class="work-shade" aria-hidden="true"></div>
+        <section
+          class="work-carousel"
+          id="workCarousel"
+          role="region"
+          aria-roledescription="轮播"
+          aria-label="作品轮播，悬停上方或下方、滚动鼠标滚轮或使用方向键切换作品"
+          aria-hidden="true"
+          inert
+        ></section>
+
+        <header class="site-header">
+          <a class="brand" href="#" aria-label="Portfolio 首页">
+            <img src="./assets/logo-dot.svg" alt="" />
+            <span>PORTFOLIO</span>
+          </a>
+          <nav class="nav" aria-label="主导航">
+            <a href="#about" aria-haspopup="dialog" aria-controls="portfolioModal">ABOUT</a>
+            <a href="#work">WORK</a>
+            <a href="#contact" aria-haspopup="dialog" aria-controls="portfolioModal">CONTACT</a>
+          </nav>
+        </header>
+
+        <div class="mouse-hint" aria-hidden="true">
+          <img src="./assets/mouse-icon.svg" alt="" />
+          <span>鼠标滑动放大</span>
+        </div>
+
+        <section
+          class="work-detail"
+          id="workDetail"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="workDetailTitle"
+          aria-hidden="true"
+          tabindex="-1"
+          hidden
+        ></section>
+
+        <div class="home-spotlight" id="homeSpotlight" aria-hidden="true" hidden></div>
+
+        <canvas
+          class="pixel-trail"
+          id="pixelTrail"
+          width="1920"
+          height="1080"
+          aria-hidden="true"
+        ></canvas>
+
+        <div
+          class="portfolio-modal"
+          id="portfolioModal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="portfolioModalTitle"
+          aria-hidden="true"
+          tabindex="-1"
+          hidden
+        >
+          <button
+            class="portfolio-modal__backdrop"
+            id="portfolioModalBackdrop"
+            type="button"
+            tabindex="-1"
+            aria-label="关闭个人档案"
+          ></button>
+
+          <div class="portfolio-modal__scene" aria-hidden="true">
+            <img
+              class="modal-piece modal-background"
+              src="./assets/modal-background.png"
+              alt=""
+              draggable="false"
+            />
+            <div class="modal-piece modal-left-papers">
+              <div class="modal-left-sheet modal-left-sheet--back">
+                <div><img src="./assets/modal-left-paper-back.svg" alt="" draggable="false" /></div>
+              </div>
+              <div class="modal-left-sheet modal-left-sheet--mid">
+                <div><img src="./assets/modal-left-paper-mid.svg" alt="" draggable="false" /></div>
+              </div>
+              <div class="modal-left-sheet modal-left-sheet--front">
+                <div><img src="./assets/modal-left-paper-front.svg" alt="" draggable="false" /></div>
+              </div>
+              <img
+                class="modal-left-title modal-left-title--en"
+                src="./assets/modal-left-title-personal-transparent.png"
+                alt=""
+                draggable="false"
+              />
+              <img
+                class="modal-left-title modal-left-title--zh"
+                src="./assets/modal-left-title-designer-transparent.png"
+                alt=""
+                draggable="false"
+              />
+            </div>
+
+            <div class="modal-id-rig" id="modalIdRig">
+              <div class="modal-piece modal-id-lanyard">
+                <img src="./assets/modal-id-lanyard-source.png" alt="" draggable="false" />
+              </div>
+              <div class="modal-piece modal-id-card" aria-hidden="true"></div>
+              <div class="modal-piece modal-id-portrait">
+                <img src="./assets/modal-id-portrait-source.png" alt="" draggable="false" />
+              </div>
+              <img
+                class="modal-piece modal-id-barcode"
+                src="./assets/modal-id-barcode-transparent.png"
+                alt=""
+                draggable="false"
+              />
+              <img
+                class="modal-shared-card modal-shared-card--blue"
+                id="modalBlueCard"
+                src="./assets/tag-back-layer.png"
+                alt=""
+                draggable="false"
+              />
+            </div>
+            <div
+              class="modal-id-rig-hotspot"
+              id="modalIdRigHotspot"
+              aria-hidden="true"
+            ></div>
+
+            <div class="modal-piece modal-info">
+              <div class="modal-info-row">
+                <span class="modal-info-label">姓名<small>NAME</small></span>
+                <span class="modal-info-value">杨杰宇</span>
+              </div>
+              <div class="modal-info-row">
+                <span class="modal-info-label">身份<small>IDENTITY</small></span>
+                <span class="modal-info-value">设计师</span>
+              </div>
+              <div class="modal-info-row">
+                <span class="modal-info-label">学校<small>SCHOOL</small></span>
+                <span class="modal-info-value">清华大学</span>
+              </div>
+              <div class="modal-info-row">
+                <span class="modal-info-label">联系方式<small>PHONE</small></span>
+                <span class="modal-info-value">15150181087</span>
+              </div>
+              <div class="modal-info-row">
+                <span class="modal-info-label">邮箱<small>EMAIL</small></span>
+                <span class="modal-info-value modal-info-value--email">1612790563@qq.com</span>
+              </div>
+            </div>
+            <div class="modal-piece modal-skill-bar">
+              <img class="modal-skill modal-skill--figma" src="./assets/modal-skill-figma.png" alt="" draggable="false" />
+              <img class="modal-skill modal-skill--sketch" src="./assets/modal-skill-sketch.png" alt="" draggable="false" />
+              <img class="modal-skill modal-skill--ae" src="./assets/modal-skill-ae.png" alt="" draggable="false" />
+              <img class="modal-skill modal-skill--ps" src="./assets/modal-skill-ps.png" alt="" draggable="false" />
+              <img class="modal-skill modal-skill--blender" src="./assets/modal-skill-blender.png" alt="" draggable="false" />
+              <img class="modal-skill modal-skill--openai" src="./assets/modal-skill-openai.png" alt="" draggable="false" />
+              <img class="modal-skill modal-skill--claude" src="./assets/modal-skill-claude.png" alt="" draggable="false" />
+              <span class="modal-skill-divider"></span>
+            </div>
+
+            <div
+              class="modal-shared-card modal-shared-card--white"
+              id="modalWhiteCard"
+            >
+              <img
+                class="modal-white-card-visual"
+                id="modalWhiteCardVisual"
+                src="./assets/tag-front-layer.png"
+                alt=""
+                draggable="false"
+              />
+            </div>
+            <div class="modal-piece modal-paperclip">
+              <div>
+                <img src="./assets/modal-paperclip-source.png" alt="" draggable="false" />
+              </div>
+            </div>
+            <div
+              class="modal-white-card-hotspot"
+              id="modalWhiteCardHotspot"
+              aria-hidden="true"
+            ></div>
+          </div>
+
+          <h2 class="visually-hidden" id="portfolioModalTitle">个人档案</h2>
+        </div>
+      </section>
+    </main>
+    </div>
+    <script src="./vendor/gsap.min.js"></script>
+    <script src="./vendor/ScrollTrigger.min.js"></script>
+    <script src="./work-carousel.js?v=card-wheel-1"></script>
+    <script src="./work-record-preview.js?v=ai-record-1"></script>
+    <script src="./script.js?v=profile-modal-card-landing-1"></script>
+    <script src="./work-scroll.js?v=card-wheel-1"></script>
+    <script src="./assets/quye-layered-offline.js?v=quye-motion-1"></script>
+    <script src="./assets/ai-efficiency-layered-v2-offline.js?v=ai-efficiency-detail-2"></script>
+    <script src="./work-detail-motion.js?v=detail-motion-3"></script>
+    <script src="./work-detail.js?v=detail-reveal-slow-1"></script>
+    <script src="./home-spotlight.js?v=profile-modal-shade-handoff-1"></script>
+  </body>
+</html>

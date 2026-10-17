@@ -1,0 +1,71 @@
+html.has-work-scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+  scrollbar-width: none;
+}
+
+html.has-work-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.has-work-scroll body {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+}
+
+.scroll-scene {
+  height: 100dvh;
+}
+
+.has-work-scroll .scroll-scene {
+  height: calc(100dvh + var(--work-scroll-distance, 100dvh));
+}
+
+.has-work-scroll .viewport {
+  position: sticky;
+  top: 0;
+}
+
+.machine {
+  transform-origin: 0 0;
+}
+
+.stage.is-scrolling .machine {
+  will-change: transform;
+}
+
+.stage.is-profile-disabled .tags-zone {
+  cursor: default;
+}
+
+.work-underlay,
+.work-shade {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.work-underlay {
+  z-index: 0;
+  background: #484848;
+}
+
+.work-shade {
+  z-index: 2;
+  right: auto;
+  width: 1277px;
+  background: linear-gradient(90deg, #000 0%, rgb(0 0 0 / 0) 100%);
+}
+
+html.is-portfolio-scroll-locked {
+  overflow-y: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage.is-scrolling .machine {
+    will-change: auto;
+  }
+}

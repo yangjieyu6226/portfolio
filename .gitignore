@@ -1,0 +1,15 @@
+.DS_Store
+/qa/
+/refs/
+
+# Original Figma exports and extracted source images stay local. The website
+# uses the prepared SVGs and offline bundles below, which remain in the repo.
+/assets/douyin-layered.svg
+/assets/lenovo-layered.svg
+/assets/lenovo-layered-v2.svg
+/assets/baidu-layered.svg
+/assets/quye-layered.svg
+/assets/ai-efficiency-layered.svg
+/assets/ai-efficiency-layered-v2.svg
+/assets/*-layered-images/
+/assets/*-layered*-images/
